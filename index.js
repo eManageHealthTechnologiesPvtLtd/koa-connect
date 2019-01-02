@@ -30,7 +30,10 @@ function noCallbackHandler(ctx, connectMiddleware, next) {
 		ctx.body = body;
 		return this;
 	}
-	//ctx.res.set = ctx.res.type
+	ctx.res.set = function() {
+		ctx.set(...arguments);
+		return this;
+	}
 	return ctx;
   }
   function addReqBridge(ctx) {
